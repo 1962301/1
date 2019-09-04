@@ -1,0 +1,93 @@
+.div{
+	position:relative;
+}
+.textarea{
+	overflow:hidden;
+    padding:0px;
+    margin:0px;
+    border:none;
+    resize:none;
+    width: 80%;
+    min-width:100px;
+    height:85px;
+    font-family:Courier;
+    line-height:17px;	  
+    position:absolute;
+    top:10px;
+    left:10px;
+    background: #FFFFFF;
+    background: linear-gradient(0deg, #F5F5F5 0%, #FFF 25%, #FFF 75%, #F5F5F5 100%);
+    border: 1px solid #EDEDED;
+    border-radius: 6px 6px 6px 6px;
+    box-shadow: 0 0 6px rgba(0, 0, 0, 0.2);
+}
+.hiddenTextArea{
+	width:0px;
+	overflow-x:scroll;
+	overflow-y:hidden;
+	white-space:nowrap;
+	visibility:hidden;
+}
+.ul{
+	position:absolute;
+    margin:0px;
+    padding-left:5px;
+    padding-right:5px;
+    color:#60062C;
+    background-color:#F3EFE5;
+    opacity:0.8;
+    z-index:1;
+    height:130px;
+    overflow-y: auto; 
+}
+.liSelected{
+	 	background-color:#BBC7C3
+}
+.li{
+    margin: 0px;
+    padding:0px;
+    display:block;
+    clear:both;
+}
+.li:hover {
+    background-color: #BBC7C3;
+    opacity:0.5;
+}
+.candleFieldSet{
+	position:absolute;
+	top:110px;
+	left:20px;
+}
+.inlineDiv{
+	display:inline-block;
+	margin:5px 15px;
+}
+.select{
+	position:relative;
+
+    transform: translate(0,-70%);
+    margin:5px;
+}
+.input{
+    padding:0px;
+    margin:0px;
+    border:none;
+    width: 70px;
+    background: linear-gradient(0deg, #F5F5F5 0%, #FFF 25%, #FFF 75%, #F5F5F5 100%);
+    border: 1px solid #EDEDED;
+    border-radius: 6px 6px 6px 6px;
+    box-shadow: 0 0 6px rgba(0, 0, 0, 0.2);
+}
+.buttonDiv{
+
+}
+.button{
+	margin:10px
+}
+.unit{
+	visibility:hidden;
+}
+.reason{
+	padding-left:300px;
+	color:red;
+}

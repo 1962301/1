@@ -1,0 +1,55 @@
+.outerDiv{
+	width:100%;
+	height:100%;
+}
+.rdiv1{
+	left:0px;
+	cursor:default;
+	background-color:white;
+	height:100%;
+	position:absolute;
+	margin:0px;
+	padding:0px;
+	z-index:0;
+}
+.rdiv2{
+	cursor:default;
+	background-color:#EDEDED;
+	height:100%;
+	position:absolute;
+	margin:0px;
+	padding:0px;
+	z-index:0;
+	overflow:auto;
+}
+.rdiv3{
+	cursor:default;
+	background-color:white;
+	height:100%;
+	position:absolute;
+	margin:0px;
+	padding:0px;
+	z-index:0;
+
+}
+.dragbar1{
+	position:absolute;
+	left:150px;
+	height:100%;
+	width:3px;
+	z-index:1;
+	cursor:col-resize;
+}
+.dragbar2{
+	position:absolute;
+	left:800px;
+	height:100%;
+	width:3px;
+	z-index:1;
+	cursor:col-resize;
+}
+
+.analyseDiv{
+	width:100%;
+	height:100%;
+}
