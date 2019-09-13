@@ -11,7 +11,8 @@
     background:linear-gradient(0deg, #F5F5F5 0%, #FFF 25%, #FFF 75%, #F5F5F5 100%);
     border:1px solid #EDEDED;
     box-shadow: 0 0 6px rgba(0, 0, 0, 0.2);
-    box-sizing:border-box
+    box-sizing:border-box;
+    visibility: hidden;
 }
 
 .save{

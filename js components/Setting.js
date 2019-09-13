@@ -2,7 +2,7 @@ var upColor = '#ec0000';
 var upBorderColor = '#8A0000';
 var downColor = '#00da3c';
 var downBorderColor = '#008F28';
-export var webAddress="";//'http://192.168.1.8:8080';
+export var webAddress="";//'http://192.168.1.8:5000';//"";
 
 export var echartSetting={
             title:{

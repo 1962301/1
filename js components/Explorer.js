@@ -3,6 +3,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {mapStateToProps_Explorer,setConFile_Explorer,setData_Echart,setConFileName_Logical,setFileSys_Explorer,file,addInfo} from "./store.js";
 import {ajaxSend,pathToJSON,getEchartOption,formatData,getPathArrFromFileSysArr} from "./Func.js";
+import 'core-js/modules/es.string.ends-with';
 
 class Explorer extends React.Component{
 	constructor(props){
@@ -48,6 +49,8 @@ class Explorer extends React.Component{
 	}
 
 	folderClick=(e)=>{
+		console.log("dispatch click");
+		console.log(e.currentTarget.onclick);
 		e.stopPropagation();
 		e.currentTarget.firstChild.classList.toggle(style.arrowDown);
 		var a=e.currentTarget.nextSibling;

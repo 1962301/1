@@ -3,6 +3,7 @@ import DateTimeSelector from "./DateTimeSelector.js";
 import {connect} from"react-redux";
 import {mapStateToProps_Logical,setAction_Logical} from "./store.js";
 import React from 'react';
+import 'core-js/modules/es.object.assign';
 
 class Editor_ActionArea extends React.Component{
 	constructor(props){

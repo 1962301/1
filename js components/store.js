@@ -1,5 +1,6 @@
 import {createStore,combineReducers} from 'redux';
 import {pathToJSON} from "./Func.js";
+import 'core-js/modules/es.object.assign';
 //********* file IS ONLYFOR TEST
 var infoLimit=150;
 export let file={
@@ -58,6 +59,14 @@ let reducer=(
 			let totalLength=state.info.length+addInfo.length;
 			return state.info.slice(totalLength-infoLimit<=0?0:totalLength-infoLimit).concat(addInfo.slice(addInfo.length>=infoLimit?addInfo.length-infoLimit:0));
 		}
+		function checkConFile(conFile){
+			if(conFile.otherParameters==undefined) conFile.otherParameters={waitForNextCandle:"false"};
+			if(conFile.entry==undefined||conFile[1]==undefined) {
+				conFile.entry={t:"1"}; 
+				conFile[1]={type:"if",condition:"",t:"",f:"",action:""};
+			};
+			return conFile;
+		}
 
 		switch(action.type){
 			case "LOGIN_STATUS":
@@ -67,7 +76,7 @@ let reducer=(
 			case "ACTIVEID_CHANGE":
 				return getNewState({activeID:action.activeID})
 			case "CONFILE_CHANGE":
-				return getNewState({conFile:action.conFile,activeID:action.activeID});
+				return getNewState({conFile:checkConFile(action.conFile),activeID:action.activeID});
 			case "ACTION_CHANGE":
 				return getNewState({conFile:changeContent(action.activeID,action.content,"action"),activeID:action.activeID});
 			case "OTHERPARAMETERS_CHANGE":
@@ -101,7 +110,7 @@ export function mapStateToProps_Explorer(state){
 	return {hasLogin:state.hasLogin,conFile:state.conFile,fileSysArr:state.fileSysArr,fileSys:state.fileSys,conFileName:state.conFileName,dataFileName:state.dataFileName,userName:state.userName};
 }
 export function mapStateToProps_Logical(state){
-	return {conFileName:state.conFileName,conFile:state.conFile,activeID:state.activeID,fileSys:state.fileSys,result:state.result};
+	return {conFileName:state.conFileName,conFile:state.conFile,activeID:state.activeID,fileSys:state.fileSys,fileSysArr:state.fileSysArr,result:state.result};
 }
 export function mapStateToProps_Echart(state){
 	return {dataFileName:state.dataFileName,data:state.data,echartOption:state.echartOption};

@@ -1,5 +1,6 @@
 import style from "./Analyse.css";
 import React from 'react';
+import 'core-js/modules/es.string.ends-with'
 //import XLSX from  "xlsx";
 
 "use strict";

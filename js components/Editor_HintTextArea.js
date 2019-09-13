@@ -112,14 +112,14 @@ export default class Editor_HintTextArea extends React.Component{
 	}
 
 	tipsScrollControll(index){
-		let liHeight=$("#li0").height();
-		let ulHeight=$("#tipsUl").height();
-		let scrolltop=$("#tipsUl").scrollTop();
+		let liHeight=document.getElementById("li0").clientHeight;
+		let ulHeight=document.getElementById("tipsUl").clientHeight;
+		let scrolltop=document.getElementById("tipsUl").scrollTop;
 		let startIndex=scrolltop/liHeight;
 		let endIndex=startIndex+Math.floor(ulHeight/liHeight)-1;
 
-		if(index<startIndex) $("#tipsUl").scrollTop(scrolltop+(index-startIndex)*liHeight);
-		else if(index>endIndex)	$("#tipsUl").scrollTop(scrolltop+(index-endIndex)*liHeight);
+		if(index<startIndex) document.getElementById("tipsUl").scrollTop=scrolltop+(index-startIndex)*liHeight;
+		else if(index>endIndex)	document.getElementById("tipsUl").scrollTop=scrolltop+(index-endIndex)*liHeight;
 	}
 
 	handleOnFocus = (e) =>{

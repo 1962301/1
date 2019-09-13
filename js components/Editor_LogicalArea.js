@@ -197,16 +197,18 @@ class Editor_LogicalArea extends React.Component{
 
 	
 	run=(e)=>{
+		document.getElementById("runSettingDiv").style.visibility="hidden";
 		if(!this.isRun){
 			this.isRun=true;
 			this.props.addInfo([{type:"normal",info:"start to calculate"}]);
+			console.log("run");
 			if(this.runSettingCheck()){
 				let [startDate,startTime,endDate,endTime]=this.getDateTime();
 				let startDateTime=startDate==""?"":startDate+(startTime==""?" 00:00:00":(" "+startTime));
 				let endDateTime=endDate==""?"":endDate+(endTime==""?" 00:00:00":(" "+endTime));
 
 				this.save(null,()=>{
-						this.props.setDataFileName(this.fileSelect.slice(1));
+						this.props.setDataFileName(this.fileSelect);
 						ajaxSend("POST","/run",(response)=>{
 							if(response.data!=undefined) 		this.props.setResult(response.data);
 							else if(response.error!=undefined)	this.props.addInfo([{type:"error",info:response.error}]);
@@ -218,7 +220,7 @@ class Editor_LogicalArea extends React.Component{
 				});
 			}
 		}
-		document.getElementById("runSettingDiv").style.visibility="hidden";
+		
 
 	}
 
@@ -251,15 +253,6 @@ class Editor_LogicalArea extends React.Component{
 		return false;
 	}
 
-
-	getDataFiles(obj,path,fileArr){
-		for(let [key,value] of Object.entries(obj)) {
-			if(typeof value == "object") this.getDataFiles(value,path+"/"+key,fileArr);
-			else if(value=="file"&&key.endsWith(".data")) fileArr.push(path+"/"+key);
-		}
-		return fileArr;
-	}
-
 	numInputChange=(e)=>{
 		if(e.target.value.match(/\d+/)&&e.target.value<20000) this.setState({numPoints:e.target.value});
 	}
@@ -267,7 +260,10 @@ class Editor_LogicalArea extends React.Component{
 		if(e.keyCode==190||e.keyCode==110) e.preventDefault();
 	}
 	fileSelectClick=(e)=>{
-		this.fileSelect=e.target.parentNode.lastChild.nodeValue;
+		this.fileSelect=e.currentTarget.parentNode.lastChild.nodeValue;
+		console.log(e.currentTarget);
+		console.log(e.currentTarget.nextSibling);
+		console.log("fileSelectClick="+this.fileSelect);
 	}
 	showRunSetting(){
 		document.getElementById("runSettingDiv").style.visibility="visible";
@@ -278,9 +274,11 @@ class Editor_LogicalArea extends React.Component{
 	}
 
 	getRunSelectDiv=(fileSys)=>{
-		this.dataFileArr=this.getDataFiles(fileSys,"",[]);
 		let t=[];
-		this.dataFileArr.forEach((item,i)=>t.push(<li><input id={"fileSelect"+i} key={"fileSelect"+i} type="radio" name="fileSelect" onClick={this.fileSelectClick} /><img src="./imgs/page.gif" className={style.gif}/> {item}</li>));
+		this.props.fileSysArr.forEach((item,i)=>{
+			if(item.frontfile.match(/\.data$/)) 
+				t.push(<li><input id={"fileSelect"+i} key={"fileSelect"+i} type="radio" name="fileSelect" onClick={this.fileSelectClick} /><img src="./imgs/page.gif" className={style.gif}/> {item.frontfile}</li>)
+		});
 		return (
 			<div id="runSettingDiv" className={style.myStyle+" "+style.runSettingDiv}>
 				Select Data File:

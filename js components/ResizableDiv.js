@@ -7,6 +7,7 @@ import Echart from "./Echart.js";
 import {myChart} from "./Echart.js";
 import Result from "./Result.js";
 import Console from "./Console.js";
+import Introduction from "./Introduction.js";
 
 export default function ResizableDiv(props){
 	var draging=false;
@@ -15,36 +16,33 @@ export default function ResizableDiv(props){
 	var dragBarWidth=0;
 	var p="";
 	var n="";
+	var nRight="";
 	var cdrag="";
 	var ndrag="";
 	var pWidth=0;
-	var nextDragBarLeft=0;
+	//var nextDragBarLeft=0;
 
 	var handleMouseMove=(e)=>{
 		if(draging){
-			p.outerWidth(pWidth+e.clientX-dragStartX);
-			cdrag.offset({left:dragBarLeft+e.clientX-dragStartX});
-			n.offset({left:dragBarLeft+e.clientX-dragStartX+dragBarWidth});
-			n.outerWidth(nextDragBarLeft-(dragBarLeft+e.clientX-dragStartX+dragBarWidth));
-			
+			p.style.width=(pWidth+e.clientX-dragStartX)+"px";
+			cdrag.style.left=(dragBarLeft+e.clientX-dragStartX)+"px";
+			n.style.left=(dragBarLeft+e.clientX-dragStartX+dragBarWidth)+"px";
+			n.style.width=(nRight-(dragBarLeft+e.clientX-dragStartX+dragBarWidth))+"px";
 		}
 	}
 
 	var handleMouseDown=(e)=>{
-		//e.preventDefault();
-		cdrag=$("#"+e.target.id);
-		p=cdrag.prev();
-		n=cdrag.next();
-		ndrag=n.next();
-
+		cdrag=e.currentTarget;
+		p=e.currentTarget.previousSibling;
+		n=e.currentTarget.nextSibling;
 
 		dragStartX=e.clientX;
-		dragBarLeft=cdrag.offset().left;
-		dragBarWidth=cdrag.outerWidth();
-		pWidth=p.outerWidth();
-
-		nextDragBarLeft=ndrag.length===0?document.documentElement.clientWidth-1:ndrag.offset().left;	
+		dragBarLeft=e.currentTarget.getBoundingClientRect().left;
+		dragBarWidth=e.currentTarget.getBoundingClientRect().width;
+		pWidth=p.getBoundingClientRect().width;
+		nRight=n.getBoundingClientRect().right;
 		draging=true;
+
 	}
 
 	var handleMouseUp=(e)=>{
@@ -53,14 +51,15 @@ export default function ResizableDiv(props){
 
 	var handleButton=(e)=>{
 		["analyse","editor"].map((item)=>{
-			if(item===e.target.id.match(/(.*)SwitchButton/)[1])	$("#"+item+"Div").show();
-			else $("#"+item+"Div").hide();
+			if(item===e.target.id.match(/(.*)SwitchButton/)[1])	document.getElementById(item+"Div").style.display="block";          // vis $("#"+item+"Div").show();
+			else document.getElementById(item+"Div").style.display="none"; //$("#"+item+"Div").hide();
 		})
 	}
 
 
 
 	return (<div className={style.outerDiv} onMouseMove={handleMouseMove} onMouseUp={handleMouseUp} >
+				<Introduction />
 				<div id="rdiv1" className={style.rdiv1}>
 					<Explorer />
 				</div>
@@ -93,7 +92,7 @@ var setPosition=function(value){
 }
 
 window.onresize=()=>{
-	var cliWidth=document.documentElement.clientWidth-1;//$("body").prop("clientWidth");
+	var cliWidth=document.documentElement.clientWidth-1;
 	var dragWidth=getWidth("dragbar1");
 	var width1=getWidth("rdiv1");
 	var width2=getWidth("rdiv2");			

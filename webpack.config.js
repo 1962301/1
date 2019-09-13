@@ -3,8 +3,8 @@ const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const CLIEngine = require("eslint").CLIEngine;
 const formatter = CLIEngine.getFormatter();
  module.exports = {
- 		devtool:"none",//"eval-source-map",
-        mode:"production",//"development",                  
+ 		devtool:"none",//"eval-source-map",//"none",//eval-source-map",
+        mode:"production",//"development",//"production",//"development",                
         entry: {
             //LoginForm:'./js components/LoginForm.js',
             //ResizableDiv:'./js components/ResizableDiv.js',

@@ -39,6 +39,7 @@
     z-index:1;
     height:130px;
     overflow-y: auto; 
+    visibility: hidden;
 }
 .liSelected{
 	 	background-color:#BBC7C3

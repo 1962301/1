@@ -17,7 +17,7 @@ class Console extends React.Component{
 
 	render(){
 		return(
-			<div style={{width:"100%",height:"100px",overflow:"auto",position:"relative",border:"1px inset",margin:"3px"}}>
+			<div id="consoleDiv" style={{width:"100%",height:"100px",overflow:"auto",position:"relative",border:"1px inset",margin:"3px"}}>
 				{this.getInfo()}
 			</div>
 		);
