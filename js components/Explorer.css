@@ -1,0 +1,116 @@
+.filesDiv{
+	width:100%;
+	height:100%;
+	position:relative
+}
+.gif{
+	position:relative;
+	top:3px;
+	-webkit-user-drag: none;
+		-khtml-user-drag: none;
+		-moz-user-drag: none;
+		-o-user-drag: none;
+		user-drag: none;
+	
+}
+.caret {
+	cursor: pointer;
+	-webkit-user-select: none; /* Safari 3.1+ */
+	-moz-user-select: none; /* Firefox 2+ */
+	-ms-user-select: none; /* IE 10+ */
+	user-select: none;
+}
+
+.caret::before {
+	content: "\25B6";
+	color: black;
+	display: inline-block;
+	margin-right: 6px;
+}
+
+.caretDown::before {
+	-ms-transform: rotate(90deg); /* IE 9 */
+	-webkit-transform: rotate(90deg); /* Safari */
+	transform: rotate(90deg);  
+}
+ul li{
+	list-style-type:none;
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-o-user-select: none;
+	user-select: none;
+	display: block;
+}
+ul{
+	padding:0 0 0 20px;
+}
+li:hover{
+	background-color:#f6f6f6
+}
+.rightArrow {
+    display :inline-block;
+    position: relative;
+    top:-3px;
+    width: 4px;
+    height: 4px;
+    margin-right: 7px;
+}
+
+.rightArrow::before {
+    display: inline-block;
+    content: " ";
+    height: 4px;
+    width: 4px;
+    border-width: 2px 2px 0 0;
+    border-color: #c7c7cc;
+    border-style: solid;
+    transform: matrix(0.71, 0.71, -0.71, 0.71, 0, 0);
+    position: relative;
+}
+.arrowDown::before {
+  	transform: rotate(135deg); 
+}
+.ContextMenuDiv{
+	position:fixed;
+	background-color: #f6f6f6;
+	box-sizing: border-box;
+    visibility:hidden;
+}
+.ContextMenuDiv:focus{
+	outline:none;
+}
+.ContextMenuUl{
+	-moz-box-shadow:inset 0px 1px 0px 0px #ffffff;
+	-webkit-box-shadow:inset 0px 1px 0px 0px #ffffff;
+	box-shadow:inset 0px 1px 0px 0px #ffffff;
+	background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #ffffff), color-stop(1, #f6f6f6));
+	background:-moz-linear-gradient(top, #ffffff 5%, #f6f6f6 100%);
+	background:-webkit-linear-gradient(top, #ffffff 5%, #f6f6f6 100%);
+	background:-o-linear-gradient(top, #ffffff 5%, #f6f6f6 100%);
+	background:-ms-linear-gradient(top, #ffffff 5%, #f6f6f6 100%);
+	background:linear-gradient(to bottom, #ffffff 5%, #f6f6f6 100%);
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#f6f6f6',GradientType=0);
+	background-color:#ffffff;
+	-moz-border-radius:3px;
+	-webkit-border-radius:1px;
+	border-radius:3px;
+	border:1px solid #e3e3e3;
+	display:inline-block;
+	cursor:pointer;
+	font-family:Arial;
+	font-size:12px;
+	padding:1px 3px;
+	text-decoration:none;
+	box-sizing: border-box;
+	margin:0px;
+	padding:0px;
+}
+.ContextMenuLi{
+	list-style-type: none;
+	padding:2px 15px;
+}
+.ContextMenuLi:hover{
+	background-color: gray;
+	
+}
